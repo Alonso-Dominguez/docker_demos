@@ -1,15 +1,14 @@
 import web
 
 urls = (
-    '/(.*)', 'hello'
+    '/', 'Index'
 )
+
+class Index:
+    def GET(self):
+        return "¡Hola desde Docker!"
+
 app = web.application(urls, globals())
 
-class hello:
-    def GET(self, name):
-        if not name:
-            name = 'World'
-        return 'Hello, ' + name + '!'
-
-if __name__ == "__main__":
-    app.run()
+if _name_ == "_main_":
+    web.httpserver.runsimple(app.wsgifunc(), ("0.0.0.0", 8080))
